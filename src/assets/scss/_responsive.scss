@@ -67,6 +67,7 @@
   }
 
   .category-nav {
+    height: auto;
     position: absolute;
     top: calc(100% + 1px);
     left: 0;
@@ -75,16 +76,21 @@
     grid-template-columns: 1fr;
     gap: 0;
     padding: 8px 12px 14px;
-    border-bottom: 1px solid $border;
-    background: $white;
+    border: 1px solid $border;
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    background: rgba($white, .99);
     box-shadow: 0 18px 30px rgba($green, .12);
-    z-index: 35;
+    opacity: 1;
+    visibility: visible;
+    z-index: 80;
 
     a {
-      min-height: 46px;
-      padding: 0 10px;
+      min-height: 48px;
+      padding: 0 12px;
       justify-content: center;
       border-radius: 10px;
+      font-size: 13px;
 
       &.active {
         background: $soft-green;
@@ -97,6 +103,8 @@
 
     &.menu-open {
       display: grid;
+      opacity: 1;
+      visibility: visible;
     }
   }
 }
@@ -106,8 +114,12 @@
     padding-bottom: 66px;
   }
 
+  :root {
+    --site-header-height: 96px;
+  }
+
   .header-offset {
-    height: 96px;
+    height: var(--site-header-height);
   }
 
   .topbar {
