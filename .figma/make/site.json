@@ -1,0 +1,10 @@
+{
+  "description": "A responsive food ordering platform offering customizable meal categories, detailed product selection, and seamless cart and checkout management for diverse user needs.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

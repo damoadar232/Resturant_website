@@ -1,0 +1,18 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.page-title { max-width: 700px; margin-bottom: 30px; > a { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 24px; color: $green; font-size: 13px; font-weight: 700; } h1 { margin: 8px 0 8px; color: $green; font-size: 48px; } p { color: $muted; } }
+.cart-page, .checkout-page { @include container; padding: 55px 0; }
+.cart-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; align-items: start; gap: 24px; }
+.cart-groups { display: grid; gap: 17px; }
+.cart-group { overflow: hidden; border: 1px solid $border; border-radius: $radius; background: $white; > header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid $border; background: $soft-green; h2 { margin: 0; color: $green; font: 700 20px "Playfair Display", serif; } span { font-weight: 800; } } }
+.cart-line { display: grid; grid-template-columns: 54px minmax(170px, 1fr) 80px 118px 100px; align-items: center; gap: 15px; padding: 15px 18px; border-bottom: 1px solid $border; &:last-child { border-bottom: 0; } }
+.cart-product { min-width: 0; > span { color: $green-2; font-size: 9px; font-weight: 800; text-transform: uppercase; } h3 { margin: 3px 0; font-size: 14px; } p, small { display: block; margin: 0; color: $muted; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
+.cart-line.has-schedule { align-items: start; .product-thumb, .cart-price, .cart-line-total { margin-top: 8px; } }
+.cart-schedule { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; > div { display: grid; gap: 4px; padding: 7px; border: 1px solid $border; border-radius: 9px; background: $cream; } .stepper { grid-template-columns: 26px 29px 26px; height: 29px; } }
+.cart-price { display: grid; font-size: 13px; small { color: $muted; font-size: 9px; } }
+.cart-line-total { display: flex; align-items: center; justify-content: flex-end; gap: 10px; button { display: grid; place-items: center; width: 30px; height: 30px; border: 0; border-radius: 8px; background: #fff0ed; color: #a53225; cursor: pointer; svg { width: 15px; } } }
+.cart-total, .bill { position: sticky; top: 145px; display: grid; gap: 13px; padding: 24px; border-radius: $radius; background: $green; color: $white; box-shadow: $shadow; > div { display: flex; align-items: center; justify-content: space-between; font-size: 13px; } .grand { margin-top: 5px; padding-top: 17px; border-top: 1px solid rgba($white, .18); strong { color: $yellow; font-size: 22px; } } > small { color: rgba($white, .6); font-size: 10px; line-height: 1.5; } .primary-button { margin-top: 5px; background: $yellow; color: $green; } }
+.cart-total .discount { color: #a5e0bd; }
+.clear-cart { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 0; background: none; color: rgba($white, .65); font-size: 11px; cursor: pointer; &:hover { color: $white; } }
+.empty-cart, .order-success { min-height: 65vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 20px; text-align: center; > div:first-child { display: grid; place-items: center; width: 90px; height: 90px; margin-bottom: 18px; border-radius: 50%; background: $soft-green; color: $green; svg { width: 42px; height: 42px; } } h1 { margin: 10px 0; color: $green; font-size: 42px; } p { color: $muted; } }

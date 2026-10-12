@@ -1,0 +1,309 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    background: rgba($white, .98);
+    border-bottom: 1px solid $border;
+    box-shadow: 0 7px 24px rgba($green, .06);
+    transform: translate3d(0, 0, 0);
+    transition: transform 300ms ease, visibility 300ms ease;
+    will-change: transform;
+
+    &.header-hidden {
+        visibility: hidden;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.header-offset {
+    height: 112px;
+}
+
+.topbar {
+    height: 36px;
+    background: $green;
+    color: $white;
+}
+
+.topbar-inner {
+    @include container;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-spacer {
+    flex: 1;
+}
+
+.location-wrap {
+    position: relative;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: $white;
+    text-align: left;
+    cursor: pointer;
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    small {
+        color: rgba($white, .65);
+        font-size: 9px;
+        font-weight: 500;
+    }
+}
+
+.location-menu {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 12px);
+    left: 0;
+    width: 290px;
+    padding: 15px;
+    border: 1px solid $border;
+    border-radius: 12px;
+    background: $white;
+    box-shadow: $shadow;
+    color: $ink;
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    >div {
+        display: flex;
+        gap: 7px;
+    }
+
+    input {
+        min-width: 0;
+        flex: 1;
+        height: 37px;
+        padding: 0 10px;
+        border: 1px solid $border;
+        border-radius: 8px;
+        outline: 0;
+
+        &:focus {
+            border-color: $green-2;
+        }
+    }
+
+    button {
+        @include button;
+        padding: 0 12px;
+        background: $green;
+        color: $white;
+        font-size: 11px;
+    }
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    a {
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        color: rgba($white, .82);
+        transition: 150ms ease;
+
+        &:hover {
+            background: rgba($white, .12);
+            color: $yellow;
+            transform: translateY(-1px);
+        }
+    }
+}
+
+.main-navbar {
+    height: 76px;
+    background: rgba($white, .97);
+    backdrop-filter: blur(14px);
+}
+
+.navbar-inner {
+    @include container;
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $green;
+    font-family: "Playfair Display", serif;
+    font-size: 21px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    em {
+        color: $green-2;
+    }
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50% 50% 50% 12px;
+    background: $green;
+    color: $yellow;
+    font-size: 22px;
+}
+
+.cart-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 15px;
+    border-radius: 12px;
+    background: $yellow;
+    color: $green;
+
+    span {
+        display: grid;
+        font-size: 12px;
+    }
+
+    small {
+        font-size: 11px;
+    }
+}
+
+.category-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 100%;
+
+    a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 64%;
+        padding: 0 14px;
+        color: $muted;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+
+        &.active {
+            color: $green;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: auto 14px 0;
+                height: 3px;
+                border-radius: 3px 3px 0 0;
+                background: $yellow;
+            }
+        }
+    }
+}
+
+.navbar-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-toggle {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid $border;
+    border-radius: 10px;
+    background: $white;
+    color: $green;
+    cursor: pointer;
+
+    &:hover {
+        background: $soft-green;
+    }
+}
+
+.header-search {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 8px);
+    right: 0;
+    width: min(430px, calc(100vw - 24px));
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px;
+    border: 1px solid $border;
+    border-radius: 12px;
+    background: $white;
+    box-shadow: $shadow;
+    color: $muted;
+
+    input {
+        min-width: 0;
+        flex: 1;
+        height: 36px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+    }
+
+    button {
+        @include button;
+        height: 36px;
+        padding: 0 13px;
+        background: $green;
+        color: $white;
+        font-size: 11px;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $border;
+    border-radius: 10px;
+    background: $white;
+    color: $green;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+}

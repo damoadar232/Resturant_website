@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+@mixin container {
+  width: min(#{$max}, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+@mixin button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 160ms ease;
+}
